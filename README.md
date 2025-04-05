@@ -27,8 +27,9 @@ Calendario è un'applicazione desktop Java che permette di visualizzare e gestir
 
 ## Installazione
 1. Assicurarsi di avere Java installato sul proprio sistema
-2. Scaricare il file JAR dell'applicazione
-3. Eseguire il file con doppio clic o tramite comando `java -jar Calendario.jar`
+2. Clonare o scaricare il repository da GitHub
+3. Compilare il progetto utilizzando il comando `javac` o un IDE come Eclipse o IntelliJ IDEA
+4. Eseguire l'applicazione con il comando `java dashboard.Calendario` o tramite l'IDE
 
 ## Idee per Futuri Aggiornamenti
 
