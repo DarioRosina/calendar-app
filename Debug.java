@@ -15,15 +15,17 @@ public class Debug {
      * 
      * @param frame The main application frame
      * @param mainPanel The main content panel
+     * @param navigationPanel The navigation panel
      * @param miniCalendarPanel The mini calendar panel
      * @param appointmentPanel The appointment panel
      * @param controlsPanel The controls panel
      */
-    public static void logPanelSizes(JFrame frame, JPanel mainPanel, JPanel miniCalendarPanel,  
+    public static void logPanelSizes(JFrame frame, JPanel mainPanel, JPanel navigationPanel, MiniCalendarPanel miniCalendarPanel,  
                                     JPanel appointmentPanel, JPanel controlsPanel) {
         System.out.println("--- Panel Sizes ---");
         System.out.println("Frame Size: " + frame.getSize());
         System.out.println("Main Panel (Light red): " + mainPanel.getSize());
+        System.out.println("Navigation Panel (Blue): " + navigationPanel.getSize());
         System.out.println("Mini Calendar Panel (Light green): " + miniCalendarPanel.getSize());
         System.out.println("Appointment Panel (Green): " + appointmentPanel.getSize());
         System.out.println("Controls Panel (Light cyan)" + controlsPanel.getSize());
@@ -34,19 +36,22 @@ public class Debug {
      * Applies debug colors to panels to visualize their boundaries.
      * 
      * @param mainPanel The main content panel
+     * @param navigationPanel The navigation panel
      * @param miniCalendarPanel The mini calendar panel
      * @param appointmentPanel The appointment panel
      * @param controlsPanel The controls panel
      */
-    public static void applyDebugColors(JPanel mainPanel, JPanel miniCalendarPanel, 
+    public static void applyDebugColors(JPanel mainPanel, JPanel navigationPanel, MiniCalendarPanel miniCalendarPanel, 
                                       JPanel appointmentPanel, JPanel controlsPanel) {
         mainPanel.setBackground(new Color(255, 220, 220));        // Light red
+        navigationPanel.setBackground(new Color(0, 0, 255));        // Blue
         miniCalendarPanel.setBackground(new Color(220, 255, 220)); // Light green
         appointmentPanel.setBackground(new Color(0, 255, 0)); // Green
         controlsPanel.setBackground(new Color(220, 255, 255));    // Light cyan
         
         // Make panels opaque to show colors
         mainPanel.setOpaque(true);
+        navigationPanel.setOpaque(true);
         miniCalendarPanel.setOpaque(true);
         appointmentPanel.setOpaque(true);
         controlsPanel.setOpaque(true);

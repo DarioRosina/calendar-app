@@ -1,29 +1,32 @@
 package dashboard;
 
+import dashboard.resources.CalendarResources;
+
 /**
  * Enum representing days of the week.
  * Provides display names and weekend status for each day.
  */
 public enum DayOfWeek {
-    MONDAY("Lunedì", false),
-    TUESDAY("Martedì", false),
-    WEDNESDAY("Mercoledì", false),
-    THURSDAY("Giovedì", false),
-    FRIDAY("Venerdì", false),
-    SATURDAY("Sabato", true),
-    SUNDAY("Domenica", true);
+    MONDAY("day.monday", false),
+    TUESDAY("day.tuesday", false),
+    WEDNESDAY("day.wednesday", false),
+    THURSDAY("day.thursday", false),
+    FRIDAY("day.friday", false),
+    SATURDAY("day.saturday", true),
+    SUNDAY("day.sunday", true);
     
-    private final String displayName;
+    private final String resourceKey;
     private final boolean weekend;
+    private String displayName;
     
     /**
      * Constructor for DayOfWeek enum.
      * 
-     * @param displayName The display name of the day
+     * @param resourceKey The resource key for the display name
      * @param weekend Whether this day is a weekend day
      */
-    DayOfWeek(String displayName, boolean weekend) {
-        this.displayName = displayName;
+    DayOfWeek(String resourceKey, boolean weekend) {
+        this.resourceKey = resourceKey;
         this.weekend = weekend;
     }
     
@@ -33,6 +36,9 @@ public enum DayOfWeek {
      * @return The display name
      */
     public String getDisplayName() {
+        if (displayName == null) {
+            displayName = CalendarResources.getString(resourceKey);
+        }
         return displayName;
     }
     

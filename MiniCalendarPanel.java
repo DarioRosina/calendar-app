@@ -14,6 +14,10 @@ public class MiniCalendarPanel extends JPanel {
     private JTextArea appointmentDetails;
     private Runnable appointmentPanelUpdater;
     
+    // Add color constants
+    private static final Color DAY_HOVER_COLOR_BG = CalendarResources.getColor("color.day_hover_color_bg"); 
+    private static final Color DAY_SELECTED_COLOR_BG = CalendarResources.getColor("color.day_selected_color_bg"); 
+    
     public MiniCalendarPanel(Calendar calendar, JLabel monthLabel) {
         this.calendar = calendar;
         this.monthLabel = monthLabel;
@@ -37,7 +41,7 @@ public class MiniCalendarPanel extends JPanel {
         setMaximumSize(new Dimension(224, 224));
     }
     
-    public void updateMiniCalendarDisplay() {
+    public void updateDisplay() {
         this.removeAll();
         
         // Aggiorna l'etichetta del mese
@@ -84,7 +88,7 @@ public class MiniCalendarPanel extends JPanel {
                 calendar.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
                 day == today.get(Calendar.DAY_OF_MONTH)) {
                 dayLabel.setBorder(BorderFactory.createLineBorder(new Color(0, 120, 215), 1, true));
-                dayLabel.setBackground(new Color(229, 243, 255));
+                dayLabel.setBackground(DAY_SELECTED_COLOR_BG);
                 dayLabel.setOpaque(true);
             }
             
@@ -110,7 +114,7 @@ public class MiniCalendarPanel extends JPanel {
                     Debug.logCalendarSelection("Day selected in mini calendar", calendar);
                     
                     // Update the mini calendar display
-                    updateMiniCalendarDisplay();
+                    updateDisplay();
                     
                     // Run the appointment panel updater
                     System.out.println("Running appointment panel updater");
@@ -154,19 +158,59 @@ public class MiniCalendarPanel extends JPanel {
                 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if (!(calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
-                        calendar.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
-                        currentDay == today.get(Calendar.DAY_OF_MONTH))) {
-                        dayLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1, true));
+                    // Get the day label that triggered the event
+                    if (e.getSource() instanceof JLabel) {
+                        JLabel dayLabel = (JLabel) e.getSource();
+                        String dayText = dayLabel.getText();
+                        
+                        // Only change cursor for actual day numbers (not empty cells)
+                        if (!dayText.isEmpty()) {
+                            // Set hand cursor to indicate clickable element
+                            dayLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                            
+                            // Highlight the day
+                            dayLabel.setBackground(DAY_HOVER_COLOR_BG);
+                            dayLabel.setOpaque(true);
+                        }
                     }
                 }
                 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    if (!(calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
-                        calendar.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
-                        currentDay == today.get(Calendar.DAY_OF_MONTH))) {
-                        dayLabel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+                    // Get the day label that triggered the event
+                    if (e.getSource() instanceof JLabel) {
+                        JLabel dayLabel = (JLabel) e.getSource();
+                        String dayText = dayLabel.getText();
+                        
+                        // Only process for actual day numbers
+                        if (!dayText.isEmpty()) {
+                            // Reset cursor
+                            dayLabel.setCursor(Cursor.getDefaultCursor());
+                            
+                            // Reset background color
+                            int day = Integer.parseInt(dayText);
+                            
+                            // Get current day for highlighting
+                            Calendar today = Calendar.getInstance();
+                            boolean isToday = (calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
+                                calendar.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
+                                day == today.get(Calendar.DAY_OF_MONTH));
+                            
+                            // Check if this is the selected day
+                            boolean isSelectedDay = (day == calendar.get(Calendar.DAY_OF_MONTH));
+                            
+                            if (isToday) {
+                                // Keep today's highlight
+                                dayLabel.setBackground(new Color(229, 243, 255));
+                                dayLabel.setOpaque(true);
+                            } else if (isSelectedDay) {
+                                dayLabel.setBackground(DAY_SELECTED_COLOR_BG);
+                                dayLabel.setOpaque(true);
+                            } else {
+                                dayLabel.setBackground(null);
+                                dayLabel.setOpaque(false);
+                            }
+                        }
                     }
                 }
             });

@@ -70,19 +70,21 @@ public class CalendarResources {
         resources.put("error.icon_load", "Impossibile caricare l'icona: {0}");
 
         // Initialize color resources
-        colorResources.put("color.weekend", new Color(220, 20, 60));
-        colorResources.put("color.today_highlight", new Color(0, 120, 215));
-        colorResources.put("color.navigation_button_bg", new Color(240, 240, 240));
-        colorResources.put("color.navigation_button", new Color(50, 50, 50));
-        colorResources.put("color.navigation_button_border", new Color(214, 217, 223));
-        colorResources.put("color.navigation_month", new Color(50, 50, 50));
-        colorResources.put("color.mini_calendar_bg", new Color(255, 255, 255));
-        colorResources.put("color.day_selected_bg", new Color(255, 130, 0));
-        colorResources.put("color.day_of_week_bg", new Color(255, 255, 255));
-        colorResources.put("color.empty_day_bg", new Color(245, 245, 245));
-        colorResources.put("color.meeting", new Color(200, 230, 255));
-        colorResources.put("color.lunch", new Color(255, 230, 230));
-        colorResources.put("color.conference", new Color(230, 255, 230));
+        colorResources.put("color.weekend_color_bg", new Color(220, 20, 60));
+        colorResources.put("color.day_hover_color_bg", new Color(240, 240, 240));
+        colorResources.put("color.day_selected_color_bd", new Color(229, 243, 255));
+        colorResources.put("color.today_highlight_color", new Color(0, 120, 215));
+        colorResources.put("color.navigation_button_color_bg", new Color(240, 240, 240));
+        colorResources.put("color.navigation_button_color", new Color(50, 50, 50));
+        colorResources.put("color.navigation_button_color_bd", new Color(214, 217, 223));
+        colorResources.put("color.navigation_month_color", new Color(50, 50, 50));
+        colorResources.put("color.mini_calendar_color_bg", new Color(255, 255, 255));
+        colorResources.put("color.day_selected_color_bg", new Color(229, 243, 255));
+        colorResources.put("color.day_of_week_color_bg", new Color(255, 255, 255));
+        colorResources.put("color.empty_day_color_bg", new Color(245, 245, 245));
+        colorResources.put("color.meeting_color_bg", new Color(200, 230, 255));
+        colorResources.put("color.lunch_color_bg", new Color(255, 230, 230));
+        colorResources.put("color.conference_color_bg", new Color(230, 255, 230));
         colorResources.put("color.header_color_bd", new Color(130, 130, 130));
         
         // Initialize dimension resources

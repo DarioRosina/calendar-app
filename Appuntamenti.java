@@ -17,9 +17,9 @@ import dashboard.resources.CalendarResources;
 public class Appuntamenti {
     
     // Constants for colors
-    private static final Color TODAY_HIGHLIGHT_COLOR = CalendarResources.getColor("color.today_highlight");
-    private static final Color EMPTY_DAY_COLOR_BG = CalendarResources.getColor("color.empty_day_bg");
-    private static final Color DAY_SELECTED_COLOR_BG = CalendarResources.getColor("color.day_selected_bg");
+    private static final Color TODAY_HIGHLIGHT_COLOR = CalendarResources.getColor("color.today_highlight_color");
+    private static final Color EMPTY_DAY_COLOR_BG = CalendarResources.getColor("color.empty_day_color_bg");
+    private static final Color DAY_SELECTED_COLOR_BG = CalendarResources.getColor("color.day_selected_color_bg");
     
     /**
      * Creates a border for appointment panels
