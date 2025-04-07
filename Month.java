@@ -31,7 +31,7 @@ public enum Month {
     public String getDisplayName() {
         if (displayName == null) {
             // Use CalendarResources class instead of ResourceBundle
-            displayName = dashboard.resources.CalendarResources.getString(resourceKey);
+            displayName = dashboard.i18n.Calendar_i18n.getString(resourceKey);
         }
         return displayName;
     }

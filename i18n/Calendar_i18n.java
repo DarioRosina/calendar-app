@@ -1,4 +1,4 @@
-package dashboard.resources;
+package dashboard.i18n;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,7 +10,7 @@ import java.util.MissingResourceException;
  * Resource class for calendar localization.
  * Provides a Java-based alternative to properties files.
  */
-public class CalendarResources {
+public class Calendar_i18n {
     private static final Map<String, String> resources = new HashMap<>();
     
     // Color constants
@@ -67,7 +67,7 @@ public class CalendarResources {
         resources.put("details.description", "Descrizione: {0}");
         resources.put("info.feature_not_implemented", "La funzionalità di {0} non è ancora implementata.");
         resources.put("info.title", "Informazione");
-        resources.put("error.icon_load", "Impossibile caricare l'icona: {0}");
+        resources.put("error.icon_load", "Impossibile caricare l''icona: {0}");
 
         // Initialize color resources
         colorResources.put("color.weekend_color_bg", new Color(220, 20, 60));
@@ -103,7 +103,7 @@ public class CalendarResources {
             return resources.get(key);
         }
         throw new MissingResourceException("Can't find resource for key " + key, 
-                                          CalendarResources.class.getName(), key);
+                                        Calendar_i18n.class.getName(), key);
     }
     
     /**
@@ -118,7 +118,7 @@ public class CalendarResources {
             return colorResources.get(key);
         }
         throw new MissingResourceException("Can't find color resource for key " + key, 
-                                          CalendarResources.class.getName(), key);
+                                        Calendar_i18n.class.getName(), key);
     }
     
     /**
@@ -133,6 +133,6 @@ public class CalendarResources {
             return dimensionResources.get(key);
         }
         throw new MissingResourceException("Can't find dimension resource for key " + key, 
-                                          CalendarResources.class.getName(), key);
+                                        Calendar_i18n.class.getName(), key);
     }
 }

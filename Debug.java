@@ -42,7 +42,7 @@ public class Debug {
      * @param controlsPanel The controls panel
      */
     public static void applyDebugColors(JPanel mainPanel, JPanel navigationPanel, MiniCalendarPanel miniCalendarPanel, 
-                                      JPanel appointmentPanel, JPanel controlsPanel) {
+                                    JPanel appointmentPanel, JPanel controlsPanel) {
         mainPanel.setBackground(new Color(255, 220, 220));        // Light red
         navigationPanel.setBackground(new Color(0, 0, 255));        // Blue
         miniCalendarPanel.setBackground(new Color(220, 255, 220)); // Light green
@@ -67,9 +67,9 @@ public class Debug {
         System.out.println("--- Calendar Selection Debug ---");
         System.out.println(message);
         System.out.println("Selected date: " + 
-                          calendar.get(Calendar.YEAR) + "-" + 
-                          (calendar.get(Calendar.MONTH) + 1) + "-" + 
-                          calendar.get(Calendar.DAY_OF_MONTH));
+                        calendar.get(Calendar.YEAR) + "-" + 
+                        (calendar.get(Calendar.MONTH) + 1) + "-" + 
+                        calendar.get(Calendar.DAY_OF_MONTH));
         System.out.println("------------------------------");
     }
 }

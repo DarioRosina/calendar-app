@@ -3,7 +3,7 @@ package dashboard;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import dashboard.resources.CalendarResources;
+import dashboard.i18n.Calendar_i18n;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,12 +11,12 @@ import java.text.MessageFormat;
 import java.util.Calendar;
 
 /**
- * Applicazione di calendario per la visualizzazione e gestione degli appuntamenti.
+ * Applicazione calendario per la visualizzazione e gestione degli appuntamenti.
  * Fornisce un'interfaccia grafica con un mini calendario per la navigazione
  * e un pannello principale per visualizzare gli appuntamenti del mese.
  */
 public class Calendario extends JFrame {
-	// Calendar components
+    // Calendar components
     private Calendar calendar;
     private JLabel monthLabel;
     private JButton prevButton;
@@ -43,21 +43,21 @@ public class Calendario extends JFrame {
     private JTextArea appointmentDetails;
     
     // Costanti per i colori
-    private static final Color WEEKEND_COLOR_BG = CalendarResources.getColor("color.weekend_color_bg");
-    private static final Color NAVIGATION_BUTTON_COLOR_BG = CalendarResources.getColor("color.navigation_button_color_bg");
-    private static final Color NAVIGATION_BUTTON_COLOR = CalendarResources.getColor("color.navigation_button_color");
-    private static final Color NAVIGATION_BUTTON_COLOR_BD = CalendarResources.getColor("color.navigation_button_color_bd");
-    private static final Color NAVIGATION_MONTH_COLOR = CalendarResources.getColor("color.navigation_month_color");
-    private static final Color MINI_CALENDAR_COLOR_BG = CalendarResources.getColor("color.mini_calendar_color_bg");
-    private static final Color DAY_SELECTED_COLOR_BD = CalendarResources.getColor("color.day_selected_color_bd");
-    private static final Color DAY_OF_WEEK_COLOR_BG = CalendarResources.getColor("color.day_of_week_color_bg");
+    private static final Color WEEKEND_COLOR_BG = Calendar_i18n.getColor("color.weekend_color_bg");
+    private static final Color NAVIGATION_BUTTON_COLOR_BG = Calendar_i18n.getColor("color.navigation_button_color_bg");
+    private static final Color NAVIGATION_BUTTON_COLOR = Calendar_i18n.getColor("color.navigation_button_color");
+    private static final Color NAVIGATION_BUTTON_COLOR_BD = Calendar_i18n.getColor("color.navigation_button_color_bd");
+    private static final Color NAVIGATION_MONTH_COLOR = Calendar_i18n.getColor("color.navigation_month_color");
+    private static final Color MINI_CALENDAR_COLOR_BG = Calendar_i18n.getColor("color.mini_calendar_color_bg");
+    private static final Color DAY_SELECTED_COLOR_BD = Calendar_i18n.getColor("color.day_selected_color_bd");
+    private static final Color DAY_OF_WEEK_COLOR_BG = Calendar_i18n.getColor("color.day_of_week_color_bg");
     
-    private static final Color MEETING_COLOR_BG = CalendarResources.getColor("color.meeting_color_bg");
-    private static final Color LUNCH_COLOR_BG = CalendarResources.getColor("color.lunch_color_bg");
-    private static final Color CONFERENCE_COLOR_BG = CalendarResources.getColor("color.conference_color_bg");
-    private static final Color HEADER_COLOR_BD = CalendarResources.getColor("color.header_color_bd");
+    private static final Color MEETING_COLOR_BG = Calendar_i18n.getColor("color.meeting_color_bg");
+    private static final Color LUNCH_COLOR_BG = Calendar_i18n.getColor("color.lunch_color_bg");
+    private static final Color CONFERENCE_COLOR_BG = Calendar_i18n.getColor("color.conference_color_bg");
+    private static final Color HEADER_COLOR_BD = Calendar_i18n.getColor("color.header_color_bd");
     // Costanti per dimensioni
-    private static final Dimension MINI_CALENDAR_SIZE = CalendarResources.getDimension("dimension.mini_calendar");
+    private static final Dimension MINI_CALENDAR_SIZE = Calendar_i18n.getDimension("dimension.mini_calendar");
     
     // Flag per tracciare la modalità di visualizzazione corrente
     private boolean compactMode = false;
@@ -104,7 +104,7 @@ public class Calendario extends JFrame {
     }
     
     private void initializeFrame() {
-        setTitle(dashboard.resources.CalendarResources.getString("app.title"));
+        setTitle(dashboard.i18n.Calendar_i18n.getString("app.title"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setupAccelerator();
         setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -114,12 +114,12 @@ public class Calendario extends JFrame {
         // Set application icon
         try {
             // Load the icon image
-            ImageIcon icon = new ImageIcon(getClass().getResource("/dashboard/resources/calendario.png"));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/dashboard/img/calendar.png"));
             setIconImage(icon.getImage());
         } catch (Exception e) {
             // If icon loading fails, log the error but continue
             System.err.println(MessageFormat.format(
-                CalendarResources.getString("error.icon_load"), e.getMessage()));
+                Calendar_i18n.getString("error.icon_load"), e.getMessage()));
         }
     }
 
@@ -147,7 +147,7 @@ public class Calendario extends JFrame {
         
         // Style the navigation buttons
         prevButton = createStyledButton("<<", NAVIGATION_BUTTON_COLOR_BG);
-        todayButton = createStyledButton(CalendarResources.getString("button.today"), NAVIGATION_BUTTON_COLOR_BG);
+        todayButton = createStyledButton(Calendar_i18n.getString("button.today"), NAVIGATION_BUTTON_COLOR_BG);
         nextButton = createStyledButton(">>", NAVIGATION_BUTTON_COLOR_BG);
         
         // Add buttons to panel
@@ -285,7 +285,7 @@ public class Calendario extends JFrame {
 
     private void finalizeSetup() {
         // Initial updates
-    	miniCalendarPanel.updateDisplay();
+        miniCalendarPanel.updateDisplay();
         updateAppointmentPanel();
         
         // Apply debug colors if debug mode is on
@@ -408,13 +408,13 @@ public class Calendario extends JFrame {
     private void addSampleAppointments(JPanel dayPanel, int day) {
         // Aggiungi appuntamenti di esempio in base ai filtri selezionati
         if (day % 3 == 0 && meetingsCheckbox.isSelected()) {
-            Appuntamenti.addAppointment(dayPanel, "10:00", CalendarResources.getString("appointment.meeting"), MEETING_COLOR_BG, calendar, appointmentDetails);
+            Appuntamenti.addAppointment(dayPanel, "10:00", Calendar_i18n.getString("appointment.meeting"), MEETING_COLOR_BG, calendar, appointmentDetails);
         }
         if (day % 5 == 0 && lunchCheckbox.isSelected()) {
-            Appuntamenti.addAppointment(dayPanel, "14:30", CalendarResources.getString("appointment.lunch"), LUNCH_COLOR_BG, calendar, appointmentDetails);
+            Appuntamenti.addAppointment(dayPanel, "14:30", Calendar_i18n.getString("appointment.lunch"), LUNCH_COLOR_BG, calendar, appointmentDetails);
         }
         if (day % 7 == 0 && conferenceCheckbox.isSelected()) {
-            Appuntamenti.addAppointment(dayPanel, "16:00", CalendarResources.getString("appointment.conference"), CONFERENCE_COLOR_BG, calendar, appointmentDetails);
+            Appuntamenti.addAppointment(dayPanel, "16:00", Calendar_i18n.getString("appointment.conference"), CONFERENCE_COLOR_BG, calendar, appointmentDetails);
         }
     }
     
@@ -430,9 +430,9 @@ public class Calendario extends JFrame {
                 for (Component button : ((JPanel) comp).getComponents()) {
                     if (button instanceof JButton) {
                         JButton btn = (JButton) button;
-                        if (btn.getText().contains(CalendarResources.getString("button.your_mode"))) {
+                        if (btn.getText().contains(Calendar_i18n.getString("button.your_mode"))) {
                             // Update button text based on current mode
-                            btn.setText(compactMode ? CalendarResources.getString("button.extended_mode") : CalendarResources.getString("button.compact_mode"));
+                            btn.setText(compactMode ? Calendar_i18n.getString("button.extended_mode") : Calendar_i18n.getString("button.compact_mode"));
                             break;
                         }
                     }
@@ -447,7 +447,7 @@ public class Calendario extends JFrame {
                 // Check if this is the filter panel (has a label with "Filtri")
                 for (Component child : panel.getComponents()) {
                     if (child instanceof JLabel && 
-                        ((JLabel) child).getText().equals(CalendarResources.getString("label.filters"))) {
+                        ((JLabel) child).getText().equals(Calendar_i18n.getString("label.filters"))) {
                         // This is the filter panel, toggle its visibility
                         panel.setVisible(!compactMode);
                         break;
@@ -487,7 +487,7 @@ public class Calendario extends JFrame {
      */
     public void showAppointmentsInDialog() {
         // Crea una nuova finestra di dialogo
-        JDialog appointmentsDialog = new JDialog(this, dashboard.resources.CalendarResources.getString("dialog.appointments_title"), false);
+        JDialog appointmentsDialog = new JDialog(this, dashboard.i18n.Calendar_i18n.getString("dialog.appointments_title"), false);
         appointmentsDialog.setLayout(new BorderLayout(10, 10));
         appointmentsDialog.setSize(400, 300);
         appointmentsDialog.setLocationRelativeTo(this);
@@ -497,7 +497,7 @@ public class Calendario extends JFrame {
         String dateText = calendar.get(Calendar.DAY_OF_MONTH) + " " + 
                         Month.fromCalendarMonth(calendar.get(Calendar.MONTH)).getDisplayName() + " " + 
                         calendar.get(Calendar.YEAR);
-        JLabel titleLabel = new JLabel(CalendarResources.getString("dialog.appointments_for") + " " + dateText);
+        JLabel titleLabel = new JLabel(Calendar_i18n.getString("dialog.appointments_for") + " " + dateText);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 14));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         titlePanel.add(titleLabel, BorderLayout.CENTER);
@@ -513,30 +513,30 @@ public class Calendario extends JFrame {
         
         if (day % 3 == 0 && meetingsCheckbox.isSelected()) {
             addAppointmentToPanel(appointmentsPanel, "10:00", 
-                                CalendarResources.getString("appointment.meeting"), MEETING_COLOR_BG);
+                                Calendar_i18n.getString("appointment.meeting"), MEETING_COLOR_BG);
             hasAppointments = true;
         }
         if (day % 5 == 0 && lunchCheckbox.isSelected()) {
             addAppointmentToPanel(appointmentsPanel, "14:30", 
-                                CalendarResources.getString("appointment.lunch"), LUNCH_COLOR_BG);
+                                Calendar_i18n.getString("appointment.lunch"), LUNCH_COLOR_BG);
             hasAppointments = true;
         }
         if (day % 7 == 0 && conferenceCheckbox.isSelected()) {
             addAppointmentToPanel(appointmentsPanel, "16:00", 
-                                CalendarResources.getString("appointment.conference"), CONFERENCE_COLOR_BG);
+                                Calendar_i18n.getString("appointment.conference"), CONFERENCE_COLOR_BG);
             hasAppointments = true;
         }
         
         // Se non ci sono appuntamenti, mostra un messaggio
         if (!hasAppointments) {
-            JLabel noAppointmentsLabel = new JLabel(CalendarResources.getString("dialog.no_appointments"));
+            JLabel noAppointmentsLabel = new JLabel(Calendar_i18n.getString("dialog.no_appointments"));
             noAppointmentsLabel.setFont(new Font("Arial", Font.ITALIC, 12));
             appointmentsPanel.add(noAppointmentsLabel);
         }
         
         // Crea un pannello per i pulsanti
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton closeButton = new JButton(dashboard.resources.CalendarResources.getString("button.close"));
+        JButton closeButton = new JButton(dashboard.i18n.Calendar_i18n.getString("button.close"));
         closeButton.addActionListener(e -> appointmentsDialog.dispose());
         buttonPanel.add(closeButton);
         
@@ -580,16 +580,16 @@ public class Calendario extends JFrame {
         
         // Create filter section
         JPanel filterPanel = new JPanel(new BorderLayout(5, 0));
-        JLabel filterLabel = new JLabel(CalendarResources.getString("label.filters"));
+        JLabel filterLabel = new JLabel(Calendar_i18n.getString("label.filters"));
         filterLabel.setFont(new Font("Arial", Font.BOLD, 12));
         
         JPanel checkboxPanel = new JPanel();
         checkboxPanel.setLayout(new BoxLayout(checkboxPanel, BoxLayout.Y_AXIS));
         
         // Add checkboxes for different appointment types
-        meetingsCheckbox = new JCheckBox(CalendarResources.getString("appointment.meeting"));
-        lunchCheckbox = new JCheckBox(CalendarResources.getString("appointment.lunch"));
-        conferenceCheckbox = new JCheckBox(CalendarResources.getString("appointment.conference"));
+        meetingsCheckbox = new JCheckBox(Calendar_i18n.getString("appointment.meeting"));
+        lunchCheckbox = new JCheckBox(Calendar_i18n.getString("appointment.lunch"));
+        conferenceCheckbox = new JCheckBox(Calendar_i18n.getString("appointment.conference"));
         
         // Set all checkboxes selected by default
         meetingsCheckbox.setSelected(true);
@@ -614,11 +614,11 @@ public class Calendario extends JFrame {
         JPanel buttonsPanel = new JPanel(new GridLayout(3, 1, 0, 5)); // Changed from 2 to 3 rows
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
         
-        JButton addButton = new JButton(CalendarResources.getString("button.new_appointment"));
-        JButton printButton = new JButton(CalendarResources.getString("button.print_calendar"));
+        JButton addButton = new JButton(Calendar_i18n.getString("button.new_appointment"));
+        JButton printButton = new JButton(Calendar_i18n.getString("button.print_calendar"));
         
         // Add toggle view button
-        JButton toggleViewButton = new JButton(CalendarResources.getString("button.compact_mode"));
+        JButton toggleViewButton = new JButton(Calendar_i18n.getString("button.compact_mode"));
         toggleViewButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         toggleViewButton.addActionListener(e -> toggleViewMode());
         
@@ -629,17 +629,17 @@ public class Calendario extends JFrame {
         // Add action listeners (placeholder functionality)
         addButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, 
-                MessageFormat.format(CalendarResources.getString("info.feature_not_implemented"), 
-                    CalendarResources.getString("button.new_appointment").toLowerCase()),
-                CalendarResources.getString("info.title"), 
+                MessageFormat.format(Calendar_i18n.getString("info.feature_not_implemented"), 
+                    Calendar_i18n.getString("button.new_appointment").toLowerCase()),
+                Calendar_i18n.getString("info.title"), 
                 JOptionPane.INFORMATION_MESSAGE);
         });
         
         printButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, 
-                MessageFormat.format(CalendarResources.getString("info.feature_not_implemented"), 
-                    CalendarResources.getString("button.print_calendar").toLowerCase()),
-                CalendarResources.getString("info.title"), 
+                MessageFormat.format(Calendar_i18n.getString("info.feature_not_implemented"), 
+                    Calendar_i18n.getString("button.print_calendar").toLowerCase()),
+                Calendar_i18n.getString("info.title"), 
                 JOptionPane.INFORMATION_MESSAGE);
         });
         
@@ -680,7 +680,7 @@ public class Calendario extends JFrame {
         ));
         
         // Create label for the details section
-        JLabel detailsLabel = new JLabel(CalendarResources.getString("label.details"));
+        JLabel detailsLabel = new JLabel(Calendar_i18n.getString("label.details"));
         detailsLabel.setFont(new Font("Arial", Font.BOLD, 14));
         
         // Create text area for appointment details
@@ -690,7 +690,7 @@ public class Calendario extends JFrame {
         appointmentDetails.setLineWrap(true);
         appointmentDetails.setWrapStyleWord(true);
         appointmentDetails.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        appointmentDetails.setText(CalendarResources.getString("label.select_appointment"));
+        appointmentDetails.setText(Calendar_i18n.getString("label.select_appointment"));
         
         // Create scroll pane for the text area
         JScrollPane scrollPane = new JScrollPane(appointmentDetails);

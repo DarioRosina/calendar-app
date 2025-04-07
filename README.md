@@ -30,10 +30,17 @@ Calendario è un'applicazione desktop Java che permette di visualizzare e gestir
 - Sistema operativo: Windows, macOS o Linux
 
 ## Installazione
+
 1. Assicurarsi di avere Java installato sul proprio sistema
 2. Clonare o scaricare il repository da GitHub
-3. Compilare il progetto utilizzando il comando `javac` o un IDE come Eclipse o IntelliJ IDEA
-4. Eseguire l'applicazione con il comando `java dashboard.Calendario` o tramite l'IDE
+3. Se si è su Windows, è possibile compilare ed eseguire il progetto senza un IDE utilizzando il file `compila_e_avvia.bat` presente nella cartella `src`. Questo script:
+   - Compila automaticamente tutti i file `.java`
+   - Copia le risorse necessarie
+   - Avvia l'applicazione
+
+   Basta eseguire il file con doppio clic o usarlo da terminale.
+
+4. In alternativa, è possibile compilare manualmente con il comando `javac` o utilizzare un IDE come Eclipse o IntelliJ IDEA
 
 ## Idee per Futuri Aggiornamenti
 

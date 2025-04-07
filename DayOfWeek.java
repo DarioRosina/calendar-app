@@ -1,6 +1,6 @@
 package dashboard;
 
-import dashboard.resources.CalendarResources;
+import dashboard.i18n.Calendar_i18n;
 
 /**
  * Enum representing days of the week.
@@ -37,7 +37,7 @@ public enum DayOfWeek {
      */
     public String getDisplayName() {
         if (displayName == null) {
-            displayName = CalendarResources.getString(resourceKey);
+            displayName = Calendar_i18n.getString(resourceKey);
         }
         return displayName;
     }

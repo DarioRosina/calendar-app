@@ -2,21 +2,21 @@ package dashboard;
 
 import javax.swing.*;
 
-import dashboard.resources.CalendarResources;
+import dashboard.i18n.Calendar_i18n;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Calendar;
 
 public class MiniCalendarPanel extends JPanel {
-	private Calendar calendar;
+    private Calendar calendar;
     private JLabel monthLabel;
     private JTextArea appointmentDetails;
     private Runnable appointmentPanelUpdater;
     
     // Add color constants
-    private static final Color DAY_HOVER_COLOR_BG = CalendarResources.getColor("color.day_hover_color_bg"); 
-    private static final Color DAY_SELECTED_COLOR_BG = CalendarResources.getColor("color.day_selected_color_bg"); 
+    private static final Color DAY_HOVER_COLOR_BG = Calendar_i18n.getColor("color.day_hover_color_bg"); 
+    private static final Color DAY_SELECTED_COLOR_BG = Calendar_i18n.getColor("color.day_selected_color_bg"); 
     
     public MiniCalendarPanel(Calendar calendar, JLabel monthLabel) {
         this.calendar = calendar;
@@ -139,7 +139,7 @@ public class MiniCalendarPanel extends JPanel {
                     // Update the appointment details
                     System.out.println("Updating appointment details text area");
                     if (appointmentDetails != null) {
-                        appointmentDetails.setText(CalendarResources.getString("label.select_appointment"));
+                        appointmentDetails.setText(Calendar_i18n.getString("label.select_appointment"));
                         
                         // Get the parent container and revalidate/repaint
                         Container parent2 = appointmentDetails.getParent();

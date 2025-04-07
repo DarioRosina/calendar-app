@@ -2,13 +2,14 @@ package dashboard;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import dashboard.i18n.Calendar_i18n;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.MessageFormat;
 import java.util.Calendar;
-
-import dashboard.resources.CalendarResources;
 
 /**
  * Utility class for handling appointments in the Calendar application.
@@ -17,9 +18,9 @@ import dashboard.resources.CalendarResources;
 public class Appuntamenti {
     
     // Constants for colors
-    private static final Color TODAY_HIGHLIGHT_COLOR = CalendarResources.getColor("color.today_highlight_color");
-    private static final Color EMPTY_DAY_COLOR_BG = CalendarResources.getColor("color.empty_day_color_bg");
-    private static final Color DAY_SELECTED_COLOR_BG = CalendarResources.getColor("color.day_selected_color_bg");
+    private static final Color TODAY_HIGHLIGHT_COLOR = Calendar_i18n.getColor("color.today_highlight_color");
+    private static final Color EMPTY_DAY_COLOR_BG = Calendar_i18n.getColor("color.empty_day_color_bg");
+    private static final Color DAY_SELECTED_COLOR_BG = Calendar_i18n.getColor("color.day_selected_color_bg");
     
     /**
      * Creates a border for appointment panels
@@ -79,7 +80,7 @@ public class Appuntamenti {
      * @param appointmentDetails The text area to display appointment details
      */
     public static void addAppointment(JPanel dayPanel, String time, String title, Color color, 
-                                     Calendar calendar, JTextArea appointmentDetails) {
+                                    Calendar calendar, JTextArea appointmentDetails) {
         JPanel appointmentPanel = new JPanel();
         appointmentPanel.setLayout(new BoxLayout(appointmentPanel, BoxLayout.Y_AXIS));
         appointmentPanel.setBackground(color);
@@ -171,10 +172,10 @@ public class Appuntamenti {
                 String year = String.valueOf(calendar.get(Calendar.YEAR));
                 
                 appointmentDetails.setText(
-                    MessageFormat.format(CalendarResources.getString("details.appointment"), title) + "\n" +
-                    MessageFormat.format(CalendarResources.getString("details.day"), day, month, year) + "\n" +
-                    MessageFormat.format(CalendarResources.getString("details.time"), time) + "\n" +
-                    MessageFormat.format(CalendarResources.getString("details.description"), title)
+                    MessageFormat.format(Calendar_i18n.getString("details.appointment"), title) + "\n" +
+                    MessageFormat.format(Calendar_i18n.getString("details.day"), day, month, year) + "\n" +
+                    MessageFormat.format(Calendar_i18n.getString("details.time"), time) + "\n" +
+                    MessageFormat.format(Calendar_i18n.getString("details.description"), title)
                 );
             }
             
@@ -196,7 +197,7 @@ public class Appuntamenti {
      */
     private static String getMonthName(int month) {
         String key = "month." + getMonthKey(month);
-        return CalendarResources.getString(key);
+        return Calendar_i18n.getString(key);
     }
 
     /**
