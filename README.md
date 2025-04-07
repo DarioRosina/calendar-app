@@ -33,7 +33,7 @@ Calendario è un'applicazione desktop Java che permette di visualizzare e gestir
 
 1. Assicurarsi di avere Java installato sul proprio sistema
 2. Clonare o scaricare il repository da GitHub
-3. Se si è su Windows, è possibile compilare ed eseguire il progetto senza un IDE utilizzando il file `compila_e_avvia.bat` presente nella cartella `src`. Questo script:
+3. Se si è su Windows, è possibile compilare ed eseguire il progetto senza un IDE utilizzando il file `compila_e_avvia.bat`. Questo script:
    - Compila automaticamente tutti i file `.java`
    - Copia le risorse necessarie
    - Avvia l'applicazione
